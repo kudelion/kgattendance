@@ -38,68 +38,6 @@
 
         <!-- Right elements -->
         <div class="d-flex align-items-center">
-
-          <!-- Notifications -->
-          <!-- <div class="dropdown">
-            <a
-              class="text-reset me-3 dropdown-toggle hidden-arrow"
-              href="#"
-              id="navbarDropdownMenuLink"
-              role="button"
-              data-mdb-toggle="dropdown"
-              aria-expanded="false"
-            >
-            <i class="fa-sharp fa-solid fa-bell" style="color: #ebebeb;"></i>
-              <span class="badge rounded-pill badge-notification bg-danger">1</span>
-            </a>
-            <ul
-              class="dropdown-menu dropdown-menu-end"
-              aria-labelledby="navbarDropdownMenuLink"
-            >
-              <li>
-                <a class="dropdown-item" href="#">Some news</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">Another news</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </li>
-            </ul>
-          </div> -->
-          <!-- Avatar -->
-          <!-- <div class="dropdown">
-            <a
-              class="dropdown-toggle d-flex align-items-center hidden-arrow"
-              href="#"
-              id="navbarDropdownMenuAvatar"
-              role="button"
-              data-mdb-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <img
-                src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-                class="rounded-circle"
-                height="25"
-                alt="Black and White Portrait of a Man"
-                loading="lazy"
-              />
-            </a>
-            <ul
-              class="dropdown-menu dropdown-menu-end"
-              aria-labelledby="navbarDropdownMenuAvatar"
-            >
-              <li>
-                <a class="dropdown-item" href="#">My profile</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">Settings</a>
-              </li>
-              <li>
-
-              </li>
-            </ul>
-          </div> -->
             <router-link to="/">
               <!-- <button> -->
                 Log out
@@ -120,45 +58,20 @@
               <h6>KG-01012020-01</h6>
             </div>
             <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
-              <li class="nav-item">
-                <a href="#" class="nav-link" aria-current="page">
-                  HOME
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link link-dark">
-                  DASHBOARD
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link link-dark">
-                  REQUEST
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link link-dark">
-                  CONTACTS US
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link link-dark">
-                  FUNCTION 1
-                </a>
-              </li>
-              <li>
-                <a href="#" class="nav-link link-dark">
-                  FUNCTION 2
-                </a>
+            <ul class="list-group nav nav-pills flex-column mb-auto">
+              <li class="list-group-item" 
+                v-for="select in FunctionList" :key="select" 
+                v-on:click="FunctionDisplay = select.display">
+                {{select.list}}
               </li>
             </ul>
             <hr>
         </div>
         <!-- Sidebnav end -->
 
-        <div class="col-md-10 py-5">
+        <div class="col-md-10 py-5 bg-light shadow-5-strong" style="border-radius: 1rem;">
           <!-- Punch In and Out Card Start -->
-          <div class="card text-center mt-5 container-fluid" style="width: 18rem;">
+          <!-- <div class="card text-center mt-5 container-fluid" style="width: 18rem;">
             <div class="card-body">
               <h5 class="card-title">
                 Punch In and Out
@@ -175,8 +88,9 @@
                 </button>
               </div>  
             </div>
-          </div>
+          </div> -->
           <!-- Punch In and Out Card End -->
+          {{FunctionDisplay}}
         </div>
     </div>
   </div>
@@ -184,14 +98,23 @@
 </template>
 
 <script>
-
-  // import DashboardPage from '@/components/DashboardPage.vue'
-
   export default{
     name:'StudentView',
     components: {
-    // DashboardPage
-}
+      },
+    data(){
+      return{
+        FunctionDisplay:'Bundy Clock',
+        FunctionList: [
+          {list:'Bundy Clock', display: 'This part will display the PUNCH IN/OUT function' },
+          {list:'Time Sheet', display: 'This will display the IN and OUT history' },
+          {list:'My Profile', display:'This part will display the PROFILE of student'},
+          {list:'Services', display:'This part will display REQUEST function'}, 
+          {list:'Funstion5', display:'display five'},
+          {list:'Funstion6', display:'display six'},
+        ]        
+      }
+    }
   }
 </script>
 

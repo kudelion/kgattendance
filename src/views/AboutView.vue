@@ -1,9 +1,6 @@
 <template>
   <div class="" id="AboutView">
     <h1>This is an about page</h1>
-  <router-link to="/">
-      <button>Home</button>
-    </router-link>  
   </div>
 
   <div class="row gx-1 justify-content-center">
@@ -14,73 +11,36 @@
             <h6>KG-01012020-01</h6>
           </div>
           <hr>
-          <ul class="nav nav-pills flex-column mb-auto">
-            <li class="nav-item">
-              <button v-on:click="name='Robin'">HOME</button>
-            </li>
-            <li>
-              <a href="#" class="nav-link link-dark">
-                DASHBOARD
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link link-dark">
-                REQUEST
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link link-dark">
-                CONTACTS US
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link link-dark">
-                FUNCTION 1
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link link-dark">
-                FUNCTION 2
-              </a>
-            </li>
-          </ul>
+            <ul class="list-group">
+              <li class="list-group-item" 
+                v-for="selection in FunctionList" :key="selection"
+                v-on:click="SidebarFunctions = selection.display">
+                  {{selection.list}}
+              </li>
+            </ul>
           <hr>
       </div>
       <!-- Sidebnav end -->
 
-      <div class="col-md-10 py-5 bg-body-tertiarys" id="DisplaySection">
-          {{ add(7, 5, 6 ) }}
-          {{ add(6, 7, 8 ) }}
-          {{  mydsiplay() }}
-          {{ names }}
-          <testing-page/>
+      <div class="col-md-10 py-5 bg-body-tertiarys justify-content-center" id="DisplaySection">
+        {{SidebarFunctions}}
       </div>
   </div>
 </template>
 
 <script>
-
-  import TestingPage from '@/components/TestingPage.vue';
-
   export default{
     name: "AboutView",
-    components: { 
-      TestingPage, 
-    },
-
     data(){
       return{
-        name:'Batman'
+        SidebarFunctions:'Function1',
+        FunctionList: [
+          {list:'Funstion1', display:'display one'},
+          {list:'Funstion2', display:'display two'},
+          {list:'Funstion3', display:'display three'},
+          {list:'Funstion4', display:'display four'},
+        ] 
       }
-    },
-    methods: {
-      add (a, b, C){
-        return a+b+C
-      },
-
-      mydsiplay(){
-        return "Ben Francis"
-      },
     }
   }
 </script>

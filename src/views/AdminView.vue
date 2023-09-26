@@ -116,7 +116,7 @@
 </template>
 
 <script>
-    // export default{
-    //     name: AdminView
-    // }
+    export default{
+        name: "AdminView",
+    }
 </script>
